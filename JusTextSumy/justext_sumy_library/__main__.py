@@ -8,8 +8,7 @@ from sumy.utils import get_stop_words
 
 def main():
     # fetch and clean HTML content using Justext
-    # url = input("Enter URL: ")
-    url = 'https://practical.engineering/blog/2023/3/21/why-construction-projects-always-go-over-budget'
+    url = input("Enter URL: ")
     response = requests.get(url)
     paragraphs = justext.justext(response.content, justext.get_stoplist("English"))
 

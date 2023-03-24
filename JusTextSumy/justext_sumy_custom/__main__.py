@@ -19,8 +19,7 @@ def main():
     stopwords = stopword.load_stopwords(stopwords_path)
 
     # fetch and clean HTML content
-    # url = input("Enter URL: ")
-    url = 'https://practical.engineering/blog/2023/3/21/why-construction-projects-always-go-over-budget'
+    url = input("Enter URL: ")
     html_content = clean_html.fetch_html_content(url)
     html_content = clean_html.clean_html_content(html_content)
 
@@ -39,26 +38,26 @@ def main():
         print(f'{class_label}: {block}')
 
     # save HTML content to file
-    with open('html_content.txt', 'w') as f:
+    with open('output/html_content.txt', 'w') as f:
         f.write(html_content)
 
     # save text content to file
-    with open('text_content.txt', 'w') as f:
+    with open('output/text_content.txt', 'w') as f:
         f.write(text_content)
 
     # save classified blocks to file
-    with open('classified_blocks.txt', 'w') as f:
+    with open('output/classified_blocks.txt', 'w') as f:
         for class_label, block in classified_blocks:
             f.write(f'{class_label}: {block}' + '\n')
 
     # summary_text_content = summarizer.summarize_file_by_line('text_content.txt', 10)
     #
-    # with open('summary_text_content.txt', 'w') as f:
+    # with open('output/summary_text_content.txt', 'w') as f:
     #     f.write(str(summary_text_content))
 
-    summary_text_content = summarizer.summarize_file_by_paragraph('text_content.txt', 10)
+    summary_text_content = summarizer.summarize_file_by_paragraph('output/text_content.txt', 10)
 
-    with open('summary_text_content.txt', 'w') as f:
+    with open('output/summary_text_content.txt', 'w') as f:
         f.write(str(summary_text_content))
 
 
