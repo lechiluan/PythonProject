@@ -13,7 +13,7 @@ import datetime
 import schedule
 
 # Set the OpenAI API key
-openai.api_key = "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+openai.api_key = "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"
 
 
 # Define the function to generate the response
@@ -55,7 +55,7 @@ class Article(BaseModel):
     hashtag: List[str]
 
 
-app = FastAPI() # Initialize the FastAPI app
+app = FastAPI()  # Initialize the FastAPI app
 
 
 @app.get("/")
@@ -117,8 +117,8 @@ async def scrape_news():
                 points, comments, times, authors):
 
             # get the summary of the article using OpenAI
-            # prompt = "Summarize (limit about 200 words) the following article: " + title + " " + link
-            # response = generate_response(prompt)
+            prompt = "Summarize (limit about 200 words) the following article: " + title + " " + link
+            response = generate_response(prompt)
 
             # Make a GET request to fetch the raw HTML content
             try:
@@ -133,9 +133,9 @@ async def scrape_news():
                     # get the link of the image, if it exists
                     image_links = link_selector.css("img[src*='jpg']::attr(src)").get()
                     # get the content of the article
-                    contents = link_selector.css("p::text").getall()
+                    # contents = link_selector.css("p::text").getall()
                     # use the summary from OpenAI
-                    # contents = response
+                    contents = response
                     # get the hashtags of the article
                     hashtags = link_selector.css("a[href*='hashtag']::text").getall()
                 elif link_request.status_code == 404:
