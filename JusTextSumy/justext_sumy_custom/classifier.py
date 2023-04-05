@@ -19,7 +19,7 @@ def classify_blocks(blocks, stopwords, max_heading_distance, max_good_distance, 
             if link_density > 0:
                 classified_blocks.append(('bad', block))
             else:
-                classified_blocks.append(('short', block))
+                classified_blocks.append(('short', block) )
         else:
             if stopwords_density > stopwords_high:
                 if length > length_high:
